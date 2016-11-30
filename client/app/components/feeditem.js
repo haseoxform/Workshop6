@@ -88,7 +88,13 @@ export default class FeedItem extends React.Component {
         // Keys only need to be unique among *siblings*, so we can re-use the
         // same key as the FeedItem.
         contents = (
-          <StatusUpdate key={data._id} onDelete={this.props.onDelete} onContentUpdate={(newContent) => this.onContentUpdate(newContent)} author={data.contents.author} postDate={data.contents.postDate} location={data.contents.location} value={data.contents.contents} />
+          <StatusUpdate key={data._id}
+            onDelete={this.props.onDelete}
+            onContentUpdate={(newContent) => this.onContentUpdate(newContent)}
+            author={data.contents.author}
+            postDate={data.contents.postDate}
+            location={data.contents.location} 
+            value={data.contents.contents} />
         );
         break;
       default:
@@ -129,7 +135,12 @@ export default class FeedItem extends React.Component {
             {data.comments.map((comment, i) => {
               // i is comment's index in comments array
               return (
-                <Comment key={i} id={i} onLike={(id) => this.onCommentLike(id, true)} onUnlike={(id) => this.onCommentLike(id, false)} author={comment.author} postDate={comment.postDate} likeCounter={comment.likeCounter}>{comment.contents}</Comment>
+                <Comment key={i}
+                  id={i} onLike={(id) => this.onCommentLike(id, true)}
+                  onUnlike={(id) => this.onCommentLike(id, false)}
+                  author={comment.author}
+                  postDate={comment.postDate}
+                  likeCounter={comment.likeCounter}>{comment.contents}</Comment>
               );
             })}
           </CommentThread>
